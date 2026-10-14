@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Block Runner — Entre Blocos e Perigos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="game" aria-label="Área de jogo"></canvas>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <button id="btn-pause" class="hud-btn" aria-label="Pausar">❚❚</button>
+      <div class="hud-box"><span class="lbl">PONTOS</span><span id="hud-score">0</span></div>
+      <div class="hud-box"><span class="lbl">DISTÂNCIA</span><span id="hud-dist">0 m</span></div>
+      <div class="hud-box ores" id="hud-ores"></div>
+      <div class="hud-box daynight" title="Ciclo de dia e noite"><span id="hud-sun">☀</span><div class="bar"><div id="hud-dn-fill"></div></div><span id="hud-moon">☾</span></div>
+    </div>
+
+    <!-- Controles de toque -->
+    <button id="btn-slide" class="touch-btn hidden" aria-label="Deslizar">▼</button>
+    <button id="btn-jump" class="touch-btn hidden" aria-label="Pular">▲</button>
+
+    <!-- Menu principal -->
+    <section id="screen-menu" class="screen">
+      <img id="logo" src="assets/ui/logo.png" alt="Block Runner" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='block'">
+      <h1 id="logo-fallback" style="display:none">BLOCK RUNNER</h1>
+      <p class="subtitle">ENTRE BLOCOS E PERIGOS</p>
+      <button class="btn primary" data-action="play">▶ JOGAR</button>
+      <button class="btn" data-action="skins">SELECIONAR SKIN</button>
+      <button class="btn" data-action="stats">ESTATÍSTICAS</button>
+      <button class="btn" data-action="settings">CONFIGURAÇÕES</button>
+      <p class="hint">Espaço / ↑ pula · ↓ desliza · Esc pausa</p>
+    </section>
+
+    <!-- Skins -->
+    <section id="screen-skins" class="screen hidden">
+      <h2>SKINS</h2>
+      <div id="wallet" class="wallet"></div>
+      <div id="skin-grid" class="skin-grid"></div>
+      <div id="skin-msg" class="msg"></div>
+      <button class="btn" data-action="menu">← VOLTAR</button>
+    </section>
+
+    <!-- Estatísticas -->
+    <section id="screen-stats" class="screen hidden">
+      <h2>ESTATÍSTICAS</h2>
+      <div id="stats-body" class="panel"></div>
+      <button class="btn" data-action="menu">← VOLTAR</button>
+    </section>
+
+    <!-- Configurações -->
+    <section id="screen-settings" class="screen hidden">
+      <h2>CONFIGURAÇÕES</h2>
+      <div class="panel">
+        <label class="row"><input type="checkbox" id="set-sound"> Efeitos sonoros</label>
+        <label class="row"><input type="checkbox" id="set-touch"> Botões de toque na tela</label>
+        <button class="btn danger" id="btn-reset">APAGAR PROGRESSO</button>
+      </div>
+      <button class="btn" data-action="menu">← VOLTAR</button>
+    </section>
+
+    <!-- Pausa -->
+    <section id="screen-pause" class="screen overlay hidden">
+      <h2>PAUSADO</h2>
+      <button class="btn primary" data-action="resume">▶ CONTINUAR</button>
+      <button class="btn" data-action="restart">REINICIAR</button>
+      <button class="btn" data-action="menu-quit">MENU PRINCIPAL</button>
+    </section>
+
+    <!-- Game Over -->
+    <section id="screen-over" class="screen overlay hidden">
+      <h2>GAME OVER</h2>
+      <div id="over-body" class="panel"></div>
+      <button class="btn primary" data-action="restart">↻ JOGAR NOVAMENTE</button>
+      <button class="btn" data-action="menu">MENU PRINCIPAL</button>
+    </section>
+
+    <div id="toast" class="hidden"></div>
+  </div>
+</div>
+
+<script src="js/physics.js"></script>
+<script src="js/progression.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/skins.js"></script>
+<script src="js/dayNight.js"></script>
+<script src="js/biomes.js"></script>
+<script src="js/minerals.js"></script>
+<script src="js/creatures.js"></script>
+<script src="js/obstacles.js"></script>
+<script src="js/player.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
